@@ -143,10 +143,10 @@
 
                             $form.prepend(
                                 $('<div />', {
-                                    'class': 'flat-alert ' + cls,
+                                    'className': 'flat-alert ' + cls,
                                     'text': result
                                 }).append(
-                                    $('<a class="close" href="#"><i class="fa fa-close"></i></a>')
+                                    $('<a className="close" href="#"><i className="fa fa-close"></i></a>')
                                 )
                             );
 
@@ -212,7 +212,7 @@
                     .children("ul")
                     .removeAttr("style")
                     .hide()
-                    .before('<span class="arrow"></span>');
+                    .before('<span className="arrow"></span>');
             } else {
                 $("#main-nav-mobi")
                     .attr("id", "main-nav")
@@ -247,10 +247,10 @@
             subscribeMsg: $('#subscribe-msg'),
             subscribeContent: $("#subscribe-content"),
             dataMailchimp: $('#subscribe-form').attr('data-mailchimp'),
-            success_message: '<div class="notification_ok">Thank you for joining our mailing list! Please check your email for a confirmation link.</div>',
-            failure_message: '<div class="notification_error">Error! <strong>There was a problem processing your submission.</strong></div>',
-            noticeError: '<div class="notification_error">{msg}</div>',
-            noticeInfo: '<div class="notification_error">{msg}</div>',
+            success_message: '<div className="notification_ok">Thank you for joining our mailing list! Please check your email for a confirmation link.</div>',
+            failure_message: '<div className="notification_error">Error! <strong>There was a problem processing your submission.</strong></div>',
+            noticeError: '<div className="notification_error">{msg}</div>',
+            noticeInfo: '<div className="notification_error">{msg}</div>',
             basicAction: 'mail/subscribe.php',
             mailChimpAction: 'mail/subscribe-mailchimp.php'
         },

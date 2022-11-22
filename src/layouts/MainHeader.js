@@ -1,6 +1,19 @@
-import React, { useEffect } from 'react'
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useContext, useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router';
+
+import appContext from '../appContext';
+import { images } from '../assets/ExportImg';
+import ModalPDF from '../components/ModalPDF';
+import MultiLanguage from '../components/MultiLanguage';
 
 function MainHeader() {
+  const [openModal, setOpenModal] = useState(false);
+  const { about, roadmap, Link } = useContext(appContext);
+  const { LOGO } = images;
+  const location = useLocation().pathname;
+  const navigate = useNavigate();
+
   const scroll = () => {
     const header = document.getElementById("header_main");
     window.addEventListener("scroll", () => {
@@ -13,62 +26,93 @@ function MainHeader() {
     })
   };
 
+  const openPDF = () => {
+    setOpenModal(true);
+  }
+
+  console.log(location)
+
+  const navigateAbout = () => {
+    if (location === "/") {
+      window.scrollTo({
+        top: about.current.offsetTop,
+        left: 0,
+        behavior: "smooth"
+      })
+    } else {
+      navigate("/")
+    }
+  }
+
   useEffect(() => {
     scroll();
-  }, []);
+  }, [location]);
 
   return (
     <header id="header_main" className="header">
       <div className="container">
         <div id="site-header-inner">
           <div className="header__logo">
-            <a href="/index.html"><img src="assets/images/logo/logopool.png" alt="" /></a>
+            {
+              location === "/" ?
+                <Link to="home" className='title-header'><img src={LOGO} alt="" /></Link> :
+                <a href="/" className='title-header'><img src={LOGO} alt="" /></a>
+            }
           </div>
           <nav id="main-nav" className="main-nav">
             <ul id="menu-primary-menu" className="menu">
               <li className="menu-item">
-                <a href="/index.html">Home</a>
+                {
+                  location === "/" ?
+                    <Link to="home" className='title-header'>Home</Link> :
+                    <a href="/" className='title-header'>Home</a>
+                }
               </li>
               <li className="menu-item">
-                <a href="/index.html#content-about">About</a>
+                {
+                  location === "/" ?
+                    <Link to="about" className='title-header'>About</Link> :
+                    <a href="/about" className='title-header'>About</a>
+                }
               </li>
               <li className="menu-item">
-                <a href="/community.html">How to mint</a>
+                <a href="/community">How to draw</a>
               </li>
               <li className="menu-item menu-item-has-children">
-                <a href="#">NFT Roulette</a>
+                <a href="#">POOLS Phone NFT</a>
                 <ul className="sub-menu bg-dark">
                   <li className="menu-item color-hover"><a className="text-white"
-                    href="/nft-information.html">NFT Information</a></li>
+                    href="/information">NFT Information</a></li>
                   <li className="menu-item">
-                    <a className="text-white" href="/nft-roulette.html">NFT Roulette</a>
+                    <a className="text-white" href="/draw-nft">POOLS Phone NFT</a>
                   </li>
                 </ul>
               </li>
               <li className="menu-item">
-                <a href="/index.html#roadmap-content">Road Map</a>
+                {
+                  location === "/" ?
+                    <Link to="roadmap" className='title-header'>Road Map</Link> :
+                    <a href="/roadmap" className='title-header'>Road Map</a>
+                }
               </li>
-              <li className="menu-item">
-                <a href="/assets/images/file_pdf/Pools_intro.pdf" target="_blank">Pools Phone</a>
+              <li className="menu-item menu-item-has-children">
+                <a href="#">Pools Phone</a>
+                <ul className="sub-menu bg-dark" style={{ letterSpacing: "1px" }}>
+                  <li className="menu-item color-hover" onClick={openPDF}>
+                    <a href="#" className="text-white" id="instruction">
+                      Information
+                    </a>
+                  </li>
+                  <li className="menu-item">
+                    <a className="text-white" href="https://poolsmobility.com/" target="_blank" rel="noreferrer">Landing
+                      Page</a>
+                  </li>
+                </ul>
               </li>
-              <li className="menu-item">
+              {/* <li className="menu-item">
                 <a href="/nft-roulette.html">My NFT</a>
-              </li>
-              <div className="translate" id="container-language">
-                <span>TRANSLATE</span>
-                <i className="far fa-solid fa-language"></i>
-                <div className="wrapper-languages" id="languages">
-                  <div id="VIETNAM">
-                    Vietnam
-                  </div>
-                  <div id="ENGLISH">
-                    English
-                  </div>
-                  <div id="KOREAN">
-                    Korean
-                  </div>
-                </div>
-              </div>
+              </li> */}
+              <MultiLanguage />
             </ul>
           </nav>
           <div className="mobile-button"><span></span></div>
@@ -89,6 +133,9 @@ function MainHeader() {
           </div>
         </div>
       </div>
+      {
+        openModal && <ModalPDF setOpenModal={setOpenModal} />
+      }
     </header>
   )
 }
