@@ -15,7 +15,7 @@ const Partner = () => {
                     </div>
                     <div className="container text-center">
                         <div className="row mt-5">
-                            <div className="col ">
+                            <div className="col">
                                 <img src={VNG} alt="" />
                             </div>
                             <div className="col">

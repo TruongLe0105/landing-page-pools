@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -13,7 +13,6 @@ import "../assets/font/font-awesome.css";
 import SlideNFT from './components/SwiperSlice';
 import { images } from '../assets/ExportImg';
 import FAQs from './components/FAQs';
-import appContext from '../appContext';
 import AboutComponent from './components/About';
 import Roadmap from './components/Roadmap';
 import Partner from './components/Partner';
@@ -31,10 +30,10 @@ function HomePage() {
           <div className="content">
             <div className="content-left">
               <h4>All that 'Phone to Earn' in POOLS</h4>
-              <h1 className="title_fist_home">The world's first Phone to Earn Smartphone</h1>
+              <h1 className="title_fist_home title-world">The world's first Phone to Earn Smartphone</h1>
               <p>Pool's goal is for users to earn money like a fortune hunter using the POOLS <br />
                 Smartphone and to live an enjoyable life where rewards become a daily routine.</p>
-              <a className="tf-button st2 btn-effect" target="_blank" href="https://poolsmobility.com/" rel="noreferrer">
+              <a className="tf-button st2 btn-effect btn-go-pools" target="_blank" href="https://poolsmobility.com/" rel="noreferrer">
                 <span className="boder-fade"></span>
                 <span className="effect">Go to POOLS Phone</span>
               </a>
@@ -49,7 +48,7 @@ function HomePage() {
           <div className="content">
             <div className="content-left">
               <h1 className="title">Be the owner of</h1>
-              <h5>POOLS Phone project</h5>
+              <h5 className='title-world'>POOLS Phone project</h5>
             </div>
             <video className="video-teaser" controls autoPlay muted loop src={videoPhone}></video>
           </div>
@@ -73,7 +72,6 @@ function HomePage() {
           </div>
         </div>
       </section>
-
       <SlideNFT />
       <Roadmap />
       <Partner />

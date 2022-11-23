@@ -53,7 +53,7 @@ const FAQs = () => {
                                 className={`flat-toggle + box-text corner-box qa-container ${currActive === index && "active"}`}
                                 onClick={() => handleClick(index)}
                             >
-                                <div className="h7 toggle-title">{box.title}</div>
+                                <div className="h7 toggle-title" id="toggle-title">{box.title}</div>
                                 <p className="toggle-content"
                                     style={{
                                         display: currActive === index && "block"

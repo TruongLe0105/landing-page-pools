@@ -1,11 +1,10 @@
-import React from 'react';
-import { Swiper, SwiperSlide, scrollbar } from 'swiper/react';
+import React, { useEffect, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import 'swiper/css';
 import 'swiper/css/effect-flip';
 
 import SwiperCore, { Autoplay, Pagination, Navigation } from 'swiper';
@@ -20,6 +19,7 @@ import nft5 from '../../assets/nfts/ted.gif';
 
 function SlideNFT() {
     SwiperCore.use([Autoplay]);
+    const [slide, setSlide] = useState(1);
 
     const arrElement = [
         {
@@ -72,20 +72,60 @@ function SlideNFT() {
             name: 'TED',
             className: 'ted',
         },
-    ]
+    ];
+
+    const deviceWidth = window.innerWidth;
+    let [mySwiper, setMySwiper] = useState(null)
+
+    useEffect(() => {
+        if (deviceWidth > "500px" && deviceWidth < "800px") {
+            setSlide(2);
+        } else if (deviceWidth < "1500px") {
+            setSlide(4);
+        } else if (deviceWidth > "1500px") {
+            setSlide(5.5);
+        }
+    }, [deviceWidth]);
 
     return (
         <Swiper
-            spaceBetween={20}
-            slidesPerView={5}
-            autoplay
+            spaceBetween={35}
+            grabCursor={true}
+            breakpoints={{
+                0: {
+                    slidesPerView: 1
+                },
+                600: {
+                    slidesPerView: 2.5
+                },
+                991: {
+                    slidesPerView: 4
+                },
+                1200: {
+                    slidesPerView: 4.5
+                },
+                1500: {
+                    slidesPerView: 5.5
+                },
+            }}
             modules={[Autoplay, Pagination, Navigation]}
+            loop={true}
+            observer={true}
+            observeParents={true}
+            shortSwipes={false}
+            longSwipes={false}
+            allowTouchMove={true}
+            autoplay={{
+                delay: 0.3
+            }}
+            freeMode={true}
+            speed={2000}
         >
             {
                 arrElement.map((nft, index) => (
-                    <SwiperSlide key={index}>
-                        <div className={"img-box" + " " + nft.className}>
-                            <img src={nft.img} alt="" />
+                    <SwiperSlide key={index} className='wrapper-box'>
+                        <div className={"image-box" + " " + nft.className}>
+                            <img src={nft.img} alt="" className='image' />
                             <div className="content">
                                 <a href="#">{nft.name}</a>
                             </div>
@@ -93,76 +133,6 @@ function SlideNFT() {
                     </SwiperSlide>
                 ))
             }
-            {/* <SwiperSlide>
-                <div >
-                    <div className="img-box">
-                        <img src={nft1} alt="" />
-                        <div className="content">
-                            <a href="#">Aaron</a>
-                        </div>
-                    </div>
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div >
-                    <div className="img-box">
-                        <img src={nft2} alt="" />
-                        <div className="content">
-                            <a href="#">Aaron</a>
-                        </div>
-                    </div>
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div >
-                    <div className="img-box">
-                        <img src={nft3} alt="" />
-                        <div className="content">
-                            <a href="#">Aaron</a>
-                        </div>
-                    </div>
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div >
-                    <div className="img-box">
-                        <img src={nft4} alt="" />
-                        <div className="content">
-                            <a href="#">Aaron</a>
-                        </div>
-                    </div>
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div >
-                    <div className="img-box">
-                        <img src={nft5} alt="" />
-                        <div className="content">
-                            <a href="#">Aaron</a>
-                        </div>
-                    </div>
-                </div>
-            </SwiperSlide> */}
-            {/* <SwiperSlide>
-                <div >
-                    <div className="img-box">
-                        <img src={nft1} alt="" />
-                        <div className="content">
-                            <a href="#">Aaron</a>
-                        </div>
-                    </div>
-                </div>
-            </SwiperSlide> */}
-            {/* <SwiperSlide>
-                <div >
-                    <div className="img-box">
-                        <img src={nft1} alt="" />
-                        <div className="content">
-                            <a href="#">Aaron</a>
-                        </div>
-                    </div>
-                </div>
-            </SwiperSlide> */}
         </Swiper>
     )
 }

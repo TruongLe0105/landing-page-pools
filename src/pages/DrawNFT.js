@@ -18,7 +18,7 @@ const DrawNFTPage = () => {
                         offered on POOLS for ONLY 10 CORK.
                     </span>
 
-                    <div className="button_imation">
+                    <>
                         <span className="desription_button_imation">Buy CORK, press DRAW NFT and get your destined Pools Phone
                             NFT now!</span>
                         <div className="button_home_imation">
@@ -32,7 +32,7 @@ const DrawNFTPage = () => {
                                     draw)</span>
                             </a>
                         </div>
-                    </div>
+                    </>
                 </div>
                 <div className="img_right_item">
                     <img src={GUIDEIMG} alt="" />
@@ -40,31 +40,6 @@ const DrawNFTPage = () => {
                         <img className="image_imation_bottom_item"
                             src={GUIDEBTN} alt="" />
                     </a>
-                </div>
-            </div>
-
-            <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog"
-                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div className="modal-dialog modal-dialog-centered" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <div className="custom_popup">
-                                <img className="img_popup" src="./assets/images/common/NFT-item/popup.png" alt="" />
-                                <h5 className="modal-title" id="exampleModalLongTitle">MAINTENANCE</h5>
-                            </div>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div className="modal-body">
-                            <ul className="list_poppup">
-                                <li className="list_popup_item">Pools Phone NFT is under maintenance</li>
-                                <li className="list_popup_item">We apologize for this inconvenience</li>
-                                <li className="list_popup_item">and thank you for your understanding.</li>
-                                <li className="list_popup_item">Please stay tuned for the return of Pools Phone NFT</li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
             <FAQs />
