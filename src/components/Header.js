@@ -124,8 +124,8 @@ const Header = ({ setOpenModal, setIsOpen, isOpen }) => {
                     <li className="menu-item">
                         <a href="/community">How to draw</a>
                     </li>
-                    <li className="menu-item menu-item-has-children">
-                        <a href="#">POOLS Phone NFT</a>
+                    <li className="menu-item menu-item-has-children menu-header">
+                        <span className='arrow'>POOLS Phone NFT</span>
                         <ul className="sub-menu bg-dark">
                             <li className="menu-item color-hover"><a className="text-white"
                                 href="/information">NFT Information</a></li>
@@ -139,13 +139,13 @@ const Header = ({ setOpenModal, setIsOpen, isOpen }) => {
                             <Link to="roadmap" className='title-header'>Road Map</Link> :
                             <a href="/roadmap" className='title-header'>Road Map</a>
                     }
-                    <li className="menu-item menu-item-has-children">
-                        <a href="#">Pools Phone</a>
+                    <li className="menu-item menu-item-has-children menu-header">
+                        <span className='arrow'>Pools Phone</span>
                         <ul className="sub-menu bg-dark" style={{ letterSpacing: "1px" }}>
                             <li className="menu-item color-hover" onClick={openPDF}>
-                                <a href="#" className="text-white" id="instruction">
+                                <span className="text-white">
                                     Information
-                                </a>
+                                </span>
                             </li>
                             <li className="menu-item">
                                 <a className="text-white" href="https://poolsmobility.com/" target="_blank" rel="noreferrer">Landing
@@ -155,7 +155,7 @@ const Header = ({ setOpenModal, setIsOpen, isOpen }) => {
                     </li>
                     <MultiLanguage />
                 </ul>
-            </nav>
+            </nav >
             {isOpen && <MenuMobile />}
         </>
     )

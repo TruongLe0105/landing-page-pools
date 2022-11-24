@@ -1,50 +1,42 @@
-import React, { useEffect, useState } from 'react';
-import { useCookies } from 'react-cookie';
+import React, { useState } from 'react';
+
+
+export const deleteCookies = () => {
+    var allCookies = document.cookie.split(';');
+    // The "expire" attribute of every cookie is 
+    // Set to "Thu, 01 Jan 1970 00:00:00 GMT"
+    for (var i = 0; i < allCookies.length; i++)
+        document.cookie = allCookies[i] + "=;expires="
+            + new Date(0).toUTCString();
+};
+
+export const translateLanguage = (language) => {
+    deleteCookies();
+    document.cookie = `googtrans=/en/${language};domain=.poolsplay.store`;
+    window.location.reload();
+};
 
 const MultiLanguage = () => {
     const [open, setOpen] = useState(false);
-    const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
-
-    const deleteCookies = () => {
-        var allCookies = document.cookie.split(';');
-        // The "expire" attribute of every cookie is 
-        // Set to "Thu, 01 Jan 1970 00:00:00 GMT"
-        for (var i = 0; i < allCookies.length; i++)
-            document.cookie = allCookies[i] + "=;expires="
-                + new Date(0).toUTCString();
-    };
-
-    const translateLanguage = (e, language) => {
-        // e.stopPropagation();
-        // deleteCookies();
-        // document.cookie = `googtrans=/en/${language};domain=.poolsplay.store`;
-        setCookie('googtrans', `/en/${language}`)
-        // setCookie(language);
-        window.location.reload();
-    };
 
     const openModal = () => {
         setOpen(!open);
     }
 
-    useEffect(() => {
-        console.log(cookies)
-    }, [cookies]);
-
     return (
         <div className="translate" id="container-language" onClick={openModal}>
-            <span>TRANSLATE</span>
+            <div style={{ cursor: "pointer" }} className='notranslate'>LANGUAGE</div>
             <i className="far fa-solid fa-language"></i>
             {
                 open && (
                     <div className="wrapper-languages" id="languages">
-                        <div id="VIETNAM" onClick={(e) => translateLanguage(e, "vi")}>
+                        <div onClick={(e) => translateLanguage("vi")}>
                             Vietnam
                         </div>
-                        <div id="ENGLISH" onClick={(e) => translateLanguage(e, "en")}>
+                        <div onClick={(e) => translateLanguage("en")}>
                             English
                         </div>
-                        <div id="KOREAN" onClick={(e) => translateLanguage(e, "ko")}>
+                        <div onClick={(e) => translateLanguage("ko")}>
                             Korean
                         </div>
                     </div>

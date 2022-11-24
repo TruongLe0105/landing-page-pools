@@ -7,6 +7,7 @@ import { images } from '../assets/ExportImg';
 import Header from '../components/Header';
 import MenuIcon from '../components/MenuIcon';
 import ModalPDF from '../components/ModalPDF';
+import { translateLanguage } from '../components/MultiLanguage';
 
 function MainHeader() {
   const [openModal, setOpenModal] = useState(false);
@@ -51,26 +52,26 @@ function MainHeader() {
           <div className="header__logo">
             {
               location === "/" ?
-                <Link to="home" className='title-header'><img src={LOGO} alt="" /></Link> :
-                <a href="/" className='title-header'><img src={LOGO} alt="" /></a>
+                <Link to="home" ><img src={LOGO} alt="" /></Link> :
+                <a href="/"><img src={LOGO} alt="" /></a>
             }
           </div>
           <Header setOpenModal={setOpenModal} setIsOpen={setIsOpen} isOpen={isOpen} />
           <MenuIcon onClick={openMenu} isOpenSideBar={isOpen} />
         </div>
         <div className="translate-mobile" id="mobile-language" onClick={openModalTranslate}>
-          <span>TRANSLATE</span>
+          <span className='notranslate'>LANGUAGE</span>
           <i className="far fa-solid fa-language"></i>
           {
             openTranslate && (
               <div className="wrapper-languages" id="mobile">
-                <div id="VNMOBILE">
+                <div onClick={(e) => translateLanguage("vi")}>
                   Vietnam
                 </div>
-                <div id="ENMOBILE">
+                <div onClick={(e) => translateLanguage("en")}>
                   English
                 </div>
-                <div id="KOMOBILE">
+                <div onClick={(e) => translateLanguage("ko")}>
                   Korean
                 </div>
               </div>

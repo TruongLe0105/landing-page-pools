@@ -60,14 +60,14 @@ const InformationPage = () => {
                                 <div className="row">4 % of total sales (NFT class Group 1/n)</div>
                                 <div className="row">5 % of total sales (NFT class Group 1/n)</div>
                             </div>
-                            <div className="column">
+                            {/* <div className="column">
                                 <div className="row">App Store Revenue Reward</div>
                                 <div className="row">14% of total store sales <br /> 10% (NFT class Group 1/n)</div>
                                 <div className="row">14% of total store sales <br /> 15% (NFT class Group 1/n)</div>
                                 <div className="row">14% of total store sales <br /> 20% (NFT class Group 1/n)</div>
                                 <div className="row">14% of total store sales <br /> 25% (NFT class Group 1/n)</div>
                                 <div className="row">14% of total store sales <br /> 30% (NFT class Group 1/n)</div>
-                            </div>
+                            </div> */}
                             <div className="column">
                                 <div className="row">Phone Purchase Referral Reward</div>
                                 <div className="row">6% of total referral purchases</div>
