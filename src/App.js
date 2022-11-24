@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Router from './routes';
 import { BrowserRouter } from "react-router-dom";
 import AOS from 'aos';

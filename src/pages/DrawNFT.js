@@ -13,14 +13,14 @@ const DrawNFTPage = () => {
                     <h1 className="title">Pools Phone NFT</h1>
                     <h3 className="title_item_imation">SEEKING FOR YOUR POOLS PHONE DESTINED NFT
                     </h3>
-                    <span className="description">POOLS PHONE NFT is one of the most effective ways to own our phone and earn
+                    <div className="description">POOLS PHONE NFT is one of the most effective ways to own our phone and earn
                         significant special benefits. Participants can win the rarest NFT from a special collection only
                         offered on POOLS for ONLY 10 CORK.
-                    </span>
+                    </div>
 
                     <>
-                        <span className="desription_button_imation">Buy CORK, press DRAW NFT and get your destined Pools Phone
-                            NFT now!</span>
+                        <div className="desription_button_imation">Buy CORK, press DRAW NFT and get your destined Pools Phone
+                            NFT now!</div>
                         <div className="button_home_imation">
                             <a href="https://winery.finance/amm/#/trade/swap?inputCurrency=0x98649fde88981790b574c9A6066004D5170Bf3EF&outputCurrency=0x51151b5C321c584d26C0DEeD57ee9de8e40A03A9"
                                 target="_blank" className="button_home_item button_home_item_imation tf-button-st2 btn-effect"

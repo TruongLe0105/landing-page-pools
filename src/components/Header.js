@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 
 import appContext from '../appContext';
@@ -6,6 +7,8 @@ import MultiLanguage from './MultiLanguage';
 
 
 const Header = ({ setOpenModal, setIsOpen, isOpen }) => {
+    const [myNft, setMyNft] = useState(false);
+
     const location = useLocation().pathname;
     const navigate = useNavigate();
     const { Link } = useContext(appContext);
@@ -41,6 +44,27 @@ const Header = ({ setOpenModal, setIsOpen, isOpen }) => {
             iconLanding.classList.add("toggle-nft-up");
         }
     }
+
+    async function checkUserNft() {
+        if (window.ethereum) {
+            const wallet = window.ethereum.selectedAddress;
+
+            if (wallet) {
+                const response = await axios.get(`${process.env.REACT_APP_API_DOMAIN}/getTransactionByAddress?wallet=${wallet}`)
+
+                console.log(response?.data?.data?.tier)
+                if (response?.data?.data?.tier) {
+                    setMyNft(true);
+                }
+            }
+        }
+    }
+
+    useEffect(() => {
+        checkUserNft();
+    }, [myNft]);
+
+    console.log(process.env.REACT_APP_API_DOMAIN)
 
     const MenuMobile = () => {
         return (
@@ -85,6 +109,13 @@ const Header = ({ setOpenModal, setIsOpen, isOpen }) => {
                                 <a href="/roadmap" className='title-header'>Road Map</a>
                         }
                     </li>
+                    {
+                        myNft && (
+                            <li id="my-nft-button" className="menu-item">
+                                <a href="/poolsphonenft">My NFT</a>
+                            </li>
+                        )
+                    }
                     <li>
                         <div className='wrapper-content' onClick={(e) => showOptions(e, "landingPage")}>
                             <span>Pools Phone</span>
@@ -139,10 +170,17 @@ const Header = ({ setOpenModal, setIsOpen, isOpen }) => {
                             <Link to="roadmap" className='title-header'>Road Map</Link> :
                             <a href="/roadmap" className='title-header'>Road Map</a>
                     }
+                    {
+                        myNft && (
+                            <li id="my-nft-button" className="menu-item">
+                                <a href="/poolsphonenft">My NFT</a>
+                            </li>
+                        )
+                    }
                     <li className="menu-item menu-item-has-children menu-header">
                         <span className='arrow'>Pools Phone</span>
                         <ul className="sub-menu bg-dark" style={{ letterSpacing: "1px" }}>
-                            <li className="menu-item color-hover" onClick={openPDF}>
+                            <li className="menu-item color-hover" onClick={openPDF} style={{ cursor: "pointer" }}>
                                 <span className="text-white">
                                     Information
                                 </span>

@@ -16,16 +16,18 @@ const ModalPDF = ({ setOpenModal }) => {
 					onClick={() => setOpenModal(false)}
 				/>
 				<a
-					href={poolsGuideEng}
-					target="_blank"
+					href="https://poolsmobility.com/static/media/eng_pools_phone_project.pdf"
+					// href={poolsGuideEng}
+					target="_blank" rel="noreferrer"
 				>English PDF File</a>
-				<a
+				{/* <a
 					href={poolsGuideVN}
-					target="_blank"
-				>Viet Nam PDF File</a>
+					target="_blank" rel="noreferrer"
+				>Viet Nam PDF File</a> */}
 				<a
-					href={poolsGuideKor}
-					target="_blank"
+					href="https://poolsmobility.com/static/media/kor_pools_phone_project.pdf"
+					// href={poolsGuideKor}
+					target="_blank" rel="noreferrer"
 				>Korean PDF File</a>
 			</div>
 		</div>
